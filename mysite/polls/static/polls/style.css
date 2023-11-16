@@ -1,9 +1,31 @@
-li a {
-    color: green;
-
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
+li a {
+    color: #042940;
+    text-decoration: none;
+    
+}
+
+li {
+    height: 100px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0)5%,#DBF227 100%);
+    
+}
+
 body{
     font-family: "Lucida Console", "Courier New", monospace;
     font-size: 20px;
+    background-color: #042940;
 }
 
