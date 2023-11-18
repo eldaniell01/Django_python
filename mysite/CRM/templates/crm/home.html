@@ -3,7 +3,7 @@
 {% block content %}
     <div class='col-md-6 offset-md-3'>
         {% if user.is_authenticated %}
-            <h1>Inicio de sesión exitoso</h1>
+            <h1><center>Inicio de sesión exitoso</center></h1>
         {% else %}
             <center><h1>LOGIN</h1></center>
             <form action="{% url "home" %}" method="POST">
@@ -11,7 +11,7 @@
                 <form>
                     <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">User</label>
-                    <input type="text" class="form-control" name="user_name", placeholder='USUARIO' required>
+                    <input type="text" class="form-control" name="username", placeholder='USUARIO' required>
                     
                     </div>
                     <div class="mb-3">
