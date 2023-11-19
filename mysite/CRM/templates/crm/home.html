@@ -3,7 +3,31 @@
 {% block content %}
     <div class='col-md-6 offset-md-3'>
         {% if user.is_authenticated %}
-            <h1><center>Inicio de sesión exitoso</center></h1>
+            <h1><center>CLIENTES</center></h1>
+            {% if customer %}
+                <table class="table table-hover">
+                    <thead class='table-dark'>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                            <th scope="col">Fecha de Creación</th>
+                        </tr>
+                    </thead>
+                    {% for custom in customer %}
+                        <tbody>
+                            <tr>
+                                <th scope="row"><a href="{% url "customer" custom.id %}">{{custom.id}}</a></th>
+                                <td>{{custom.first_name}}</td>
+                                <td>{{custom.last_name}}</td>
+                                <td>{{custom.created_at}}</td>
+                            </tr>
+                        </tbody>
+                    {% endfor %}
+                </table>
+            {% else %}
+                <h3><center>NO HAY CLIENTES</center></h3>
+            {% endif %}
         {% else %}
             <center><h1>LOGIN</h1></center>
             <form action="{% url "home" %}" method="POST">

@@ -2,11 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from .form import SingUpForm
+from .models import ModelCustomers
 # Create your views here.
 
 
 def home(request):
     """revisa si esta logeado """
+    customers = ModelCustomers.objects.all()
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -19,7 +21,7 @@ def home(request):
             messages.success(request, 'error al iniciar sesión')
             return redirect('home')
     else:
-        return render(request, 'crm/home.html', {})
+        return render(request, 'crm/home.html', {'customer':customers})
 
 def login_user(request):
     pass
@@ -45,3 +47,12 @@ def register_user(request):
     
         return render(request, 'crm/register.html', {'form': form})
     return render(request, 'crm/register.html', {'form': form})
+
+def customer(request, pk):
+    if request.user.is_authenticated:
+        customer = ModelCustomers.objects.get(id=pk)
+        return render(request, 'crm/customer.html',{'customer': customer})
+    else:
+        messages.success(request, 'debes de estar logeado para ver esta página')
+        return redirect('home')
+    

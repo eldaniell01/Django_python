@@ -81,16 +81,16 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-    
     'dbclientes': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'cliente',
         'USER': 'root',
         'PASSWORD': '123',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'HOST': '127.0.0.1',
+        'PORT': '',
     }
 }
+DATABASE_ROUTERS = ['CRM.routers.DatabaseRouter2']
 
 
 # Password validation
@@ -117,7 +117,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Guatemala'
 
 USE_I18N = True
 
