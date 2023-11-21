@@ -1,6 +1,7 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import ModelCustomers
 
 class SingUpForm(UserCreationForm):
     email = forms.EmailField(label='', widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Correo Electronico'}))
@@ -28,3 +29,13 @@ class SingUpForm(UserCreationForm):
         self.fields['password2'].widget.attrs['placeholder'] = 'Confirma tu contraseña'
         self.fields['password2'].label = ''
         self.fields['password2'].help_text = '<span class="form-text text-muted"><small>Enter the same password as before, for verification.</small></span>'
+        
+
+class addCustomer(forms.ModelForm):
+    first_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'Nombre', 'class': ' form-control'}), label='')
+    last_name = forms.CharField(required=True, widget=forms.widgets.TextInput(attrs={'placeholder': 'Apellido', 'class': ' form-control'}), label='')
+    
+    class Meta:
+        model = ModelCustomers
+        exclude = ('user', )
+        

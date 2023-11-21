@@ -1,13 +1,17 @@
 {% extends "./base.html" %}
 {% block content %}
+  <div class='col-md-6 offset-md-3'>
     <h1>CLIENTE {{customer.id}}</h1>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h5 class="card-title">{{customer.first_name}} {{customer.last_name}}</h5>
-          <h6 class="card-subtitle mb-2 text-body-secondary">{{customer.created_at}}</h6>
-          <a href="{% url "home" %}" class="card-link">Regresar</a>
-          <a href="#" class="card-link">Another link</a>
-        </div>
+    <div class=" card" style="width: 31rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{customer.first_name}} {{customer.last_name}}</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">{{customer.created_at}}</h6>
+        <a href="{% url "home" %}" class="btn btn-primary">Regresar</a>
+        <a href="{% url "delete_customer" customer.id%}" class="btn btn-primary">ELIMINAR CLIENTE</a>
+        <a href="{% url "update_customer" customer.id%}" class="btn btn-primary">ACTUALIZAR CLIENTE</a>
       </div>
+    </div>
+  </div>
+      
 {% endblock%}
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from .form import SingUpForm
+from .form import SingUpForm, addCustomer
 from .models import ModelCustomers
 # Create your views here.
 
@@ -56,3 +56,38 @@ def customer(request, pk):
         messages.success(request, 'debes de estar logeado para ver esta página')
         return redirect('home')
     
+def delete_customer(request, pk):
+    if request.user.is_authenticated:
+        customer = ModelCustomers.objects.get(id=pk)
+        customer.delete()
+        messages.success(request, 'se ha eliminado cliente')
+        return redirect('home')
+    else:
+        messages.success(request, 'debes de estar logeado para ver esta página')
+        return redirect('home')
+    
+def add_customer(request):
+    form = addCustomer(request.POST or None)
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            if form.is_valid():
+                add_customer = form.save()
+                messages.success(request, 'cliente registrado')
+                return redirect('home')
+        return render(request, 'crm/add_customer.html', {'form': form})
+    else:
+        messages.success(request, 'debes de estar logeado para ver esta página')
+        return redirect('home')
+    
+def update_customer(request, pk):
+    if request.user.is_authenticated:
+        customer = ModelCustomers.objects.get(id=pk)
+        form = addCustomer(request.POST or None, instance=customer)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'cliente actualizado')
+            return redirect('home')
+        return render(request, 'crm/update_customer.html', {'form': form})
+    else:
+        messages.success(request, 'debes de estar logeado para ver esta página')
+        return redirect('home')
