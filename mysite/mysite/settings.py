@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'todoList.apps.TodolistConfig',
     'CRM.apps.CrmConfig',
     'polls.apps.PollsConfig',
     'django.contrib.admin',

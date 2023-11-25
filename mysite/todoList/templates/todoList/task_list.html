@@ -1,0 +1,24 @@
+{% if request.user.is_authenticated %}
+    <p>{{request.user}}</p>
+    <a href="">Cerrar Sesion</a>
+{% else %}
+    <a href="">Iniciar Sesion</a>
+{% endif %}
+
+<h1>LISTA DE TAREA</h1>
+<a href="{% url "task_create" %}">Crear Tarea</a>
+<table>
+    <tr>
+        <th>TAREA</th>
+    </tr>
+    {% for task in object_list %}
+        <tr>
+            <td>{{task.title}}</td>
+            <td><a href="{% url "task" task.id %}">Ver</a></td>
+            <td><a href="{% url "task_update" task.id %}">Editar</a></td>
+            <td><a href="{% url "task_delete" task.id %}">Eliminar</a></td>
+        </tr>
+        {%empty%}
+            <h3>No hay tareas</h3>
+    {% endfor %}
+</table>

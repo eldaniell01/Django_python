@@ -1,0 +1,7 @@
+<h1>FORMULARIO DE TAREAS</h1>
+<a href="{% url "tasks" %}">Regresar</a>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Crear">
+</form>
