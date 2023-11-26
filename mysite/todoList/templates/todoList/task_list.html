@@ -1,17 +1,21 @@
 {% if request.user.is_authenticated %}
     <p>{{request.user}}</p>
-    <a href="">Cerrar Sesion</a>
+    <a href="{% url "logout" %}">Cerrar Sesion</a>
 {% else %}
-    <a href="">Iniciar Sesion</a>
+    <a href="{% url "login" %}">Iniciar Sesion</a>
 {% endif %}
 
 <h1>LISTA DE TAREA</h1>
 <a href="{% url "task_create" %}">Crear Tarea</a>
+<form action="" method="GET">
+    <input type="text" name="search" value={{search}}>
+    <input type="submit" value='Buscar'>
+</form>
 <table>
     <tr>
         <th>TAREA</th>
     </tr>
-    {% for task in object_list %}
+    {% for task in tasks %}
         <tr>
             <td>{{task.title}}</td>
             <td><a href="{% url "task" task.id %}">Ver</a></td>
