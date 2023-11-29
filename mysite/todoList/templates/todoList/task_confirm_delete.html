@@ -1,6 +1,10 @@
-<a href="{% url "tasks" %}">Regresar</a>
-<form method='POST'action="">
-    {% csrf_token %}
-    <P>Estas seguro que quiere eliminar la tarea? {{task}}</P>
-    <input type="submit" value="Eliminar">
-</form>
+{% extends "./index.html" %}
+{% block content %}
+    <a href="{% url "tasks" %}">Regresar</a>
+    <form method='POST'action="">
+        {% csrf_token %}
+        <P>Estas seguro que quiere eliminar la tarea? {{task}}</P>
+        <input type="submit" value="Eliminar">
+    </form>
+{% endblock content %}
+ 

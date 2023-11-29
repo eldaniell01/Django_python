@@ -1,7 +1,10 @@
-<h1>Crear Cuenta</h1>
-<form action="" method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Crear">
-</form>
-<a href="{% url "login" %}">Regresar</a>
+{% extends "./index.html" %}
+{% block content %}
+    <h1>Crear Cuenta</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Crear">
+    </form>
+    <a href="{% url "login" %}">Regresar</a>
+{% endblock content %}
