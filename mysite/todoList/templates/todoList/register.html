@@ -1,10 +1,13 @@
 {% extends "./index.html" %}
 {% block content %}
-    <h1>Crear Cuenta</h1>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Crear">
-    </form>
-    <a href="{% url "login" %}">Regresar</a>
+    <div class="form_register">
+        <h1><center>Crear Cuenta</center></h1>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input class='button' type="submit" value="Crear">
+        </form>
+    </div>
+    <br>
+    <a class='button' href="{% url "login" %}">Regresar</a>
 {% endblock content %}

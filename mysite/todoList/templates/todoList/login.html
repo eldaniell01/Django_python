@@ -1,10 +1,13 @@
 {% extends "./index.html" %}
 {% block content %}
-    <h1>login</h1>
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input type="submit" value="Login">
-    </form>
-    <a href="{% url "register" %}">Registrarse</a>
+    <div class="login">
+        <h1><center>LOGIN</center></h1>
+        <form class='form_login'action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input class='button' type="submit" value="Login">
+        </form>
+        <br>
+        <a class='button' href="{% url "register" %}">Registrarse</a>
+    </div>
 {% endblock content %}

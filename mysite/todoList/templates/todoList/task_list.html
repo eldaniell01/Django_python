@@ -1,32 +1,54 @@
 {% extends "./index.html" %}
 {% block content %}
     {% if request.user.is_authenticated %}
-        <p>{{request.user}}</p>
-        <a href="{% url "logout" %}">Cerrar Sesion</a>
+        <p class='user'>Hola {{request.user}} tienes {{count}} tareas incompleta{{count|pluralize:"s"}}</p>
+        <br>
+        <a  class='button' href="{% url "logout" %}">Cerrar Sesion</a>
     {% else %}
-        <a href="{% url "login" %}">Iniciar Sesion</a>
+        <a  href="{% url "login" %}">Iniciar Sesion</a>
     {% endif %}
+    
 
+    <div class="searchs">
+        
+        <form action="" method="GET">
+            <input class='search' type="text" name="search" value={{search}}>
+            <input class='button' type="submit" value='Buscar'>
+        </form>
+        <a href="{% url "task_create" %}">&#x2b;</a>
+    </div>
+    
+    
+    
     <h1>LISTA DE TAREAS</h1>
-    <a href="{% url "task_create" %}">Crear Tarea</a>
-    <form action="" method="GET">
-        <input type="text" name="search" value={{search}}>
-        <input type="submit" value='Buscar'>
-    </form>
-    <table>
-    <tr>
-        <th colspan='3'>TAREAS</th>
-    </tr>
-    {% for task in tasks %}
-        <tr>
-            <td>{{task.title}}</td>
-            
-            <td><a href="{% url "task_update" task.id %}">Editar</a></td>
-            <td><a href="{% url "task_delete" task.id %}">Eliminar</a></td>
-        </tr>
-        {%empty%}
-            <h3>No hay tareas</h3>
-    {% endfor %}
-    </table>
+    
+
+    <div>
+        {% for task in tasks %}
+            <div class='header'>
+                {% if task.state %}
+                    <div class='titles'>
+                        <div class="complete"></div>
+                        <s><a href="{% url "task_update" task.id %}">{{task.title}}</a></s>
+                        
+                    </div>
+                    <a href="{% url "task_delete" task.id %}">&#215;</a>
+                {% else %}
+                    <div class="titles">
+                        <div class="incomplete"></div>
+                        <a href="{% url "task_update" task.id %}">{{task.title}}</a>
+                        
+                    </div>
+                    <a href="{% url "task_delete" task.id %}">&#215;</a>
+
+                    
+                {% endif %}
+            </div>
+            {%empty%}
+            <h3>No hay Tareas</h3>
+        {% endfor %}
+    </div>
+    
+
 {% endblock content %}
 

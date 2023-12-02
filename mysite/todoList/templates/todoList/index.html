@@ -20,12 +20,9 @@
             max-width: 500px;
             box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
             border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+           
         }
-        p {
+        .user {
             margin: 0;
             
             padding-top: 5px;
@@ -40,36 +37,167 @@
         a { 
             color: black;
             text-decoration: none;
-            background: #729CA6;
-            padding: 5px;
-            border-radius: 5px;
+        }
+
+        .header{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-top: 1px solid black;
+        }
+        .titles {
+            display: flex;
+            align-items: center; 
+        }
+
+        .titles a {
+            margin-left: 10px;
+        }
+        .complete{
+            height: 15px;
+            width: 15px;
+            background: #D90404;
+            border-radius: 50%;
+        }
+        .incomplete{
+            height: 15px;
+            width: 15px;
+            background: rgb(218,218,218);
+            border-radius: 50%;
+        }
+        
+        .searchs{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+        }
+        
+        .button{
+            font-family: 'Roboto', sans-serif;
+            padding: 10px;
+            background: #A9D9D0;
+            font-size: 0.9em;
+            font-weight: 600;
+            border-radius: 6px;
             transition: 0.5s ease;
-            width: 100px;
+        }
+        .button:hover{
+            background: #159A9C;
+        }
+        .search{
+            width: 65%;
+            height: 30px;
+            border-radius: 6px;
+            border: 1px solid;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        #id_title{
+            width: 65%;
+            height: 30px;
+            border-radius: 6px;
+            border: 1px solid;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        textarea{
+            border-radius: 6px;
+            border: 1px solid;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        .sesion{
+            font-family: 'Roboto', sans-serif;
+            padding: 10px;
+            background: #A9D9D0;
+            font-size: 0.9em;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: 0.5s ease;
+        }
+
+        .login{
+            display: flex;
+            flex-direction: column;
+            align-items:center;
+        }
+        #id_username{
+            width: 65%;
+            height: 30px;
+            border-radius: 6px;
+            border: 1px solid;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        #id_password{
+            width: 65%;
+            height: 30px;
+            border-radius: 6px;
+            border: 1px solid;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        .form_login{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .form_login p{
+            display: flex;
+            aling-items: center;
+            justify-content: space-between;
+        }
+        
+        label{
             text-align: center;
+        }
+
+        .form_register p{
+            margin: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #id_password1{
+            width: 65%;
+            height: 30px;
+            border-radius: 6px;
+            border: 1px solid;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        #id_password2{
+            width: 65%;
+            height: 30px;
+            border-radius: 6px;
+            border: 1px solid;
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .form_task p{
+            display: flex;
+
+        }
+
+        .form_task p #id_title{
             margin: 10px;
         }
-        a:hover{
-            background: #FFFFFF;
+        .form_task p textarea{
+            margin: 10px;
         }
-        table, td, th {
-            border: 1px solid;
-        }
-        table{
-            width: 100%;
-            padding: 5px;
-            border-collapse: collapse;
-            text-align: center;
-        }
-        tr {
-            height: 50px;
-            background: #DEEFE7;
-            transition: 0.5s ease;
-        }
-        tr:hover{
-            background: #FFFFFF;
-        }
-        
-        
     </style>
 </head>
 <body>

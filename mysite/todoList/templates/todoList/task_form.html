@@ -1,11 +1,11 @@
 {% extends "./index.html" %}
 {% block content %}
     <h1>FORMULARIO DE TAREAS</h1>
-    <a href="{% url "tasks" %}">Regresar</a>
-    <form action="" method="POST">
+    <a class='button' href="{% url "tasks" %}">Regresar</a>
+    <form class='form_task' action="" method="POST">
         {% csrf_token %}
         {{form.as_p}}
-        <input type="submit" value="Crear">
+        <input class='button' type="submit" value="Crear">
     </form>
 {% endblock content %}
 
