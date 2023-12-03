@@ -22,5 +22,6 @@ urlpatterns = [
     path('', include('CRM.urls')),
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
-    path('tasklist/', include('todoList.urls'))
+    path('tasklist/', include('todoList.urls')),
+    path('students/', include('students.urls'))
 ]
