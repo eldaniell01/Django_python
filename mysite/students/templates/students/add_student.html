@@ -1,0 +1,31 @@
+{% extends "./index.html" %}
+
+{% block content %}
+    <h3 class="text-center m-4">REGISTRO ESTUDIANTES</h3>
+        {% if success %}
+            <div class="alert alert-success" role='alert'>
+                <a href="{% url "index" %}">Regresar a la pagina principal</a>
+            </div>
+        {% else %}
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <div class="card text-white bg-info mb-3">
+                        <div class="card-header">
+                            <i class="fa-solid fa-address-card fa-lg"></i> REGISTRO
+                        </div>
+                        <div class="card-body">
+                          <form action="{% url "add" %}" method='POST'>
+                            {% csrf_token %}
+                            {{form.as_p}}
+                            <button type='submit' class='btn btn-primary'>Registrar</button>
+                            <a href="{% url "index" %}" class='btn btn-secondary'>Cancelar</a>
+                          </form>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        {% endif %}
+
+{% endblock %}
+
+
