@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'marketplace.apps.MarketplaceConfig',
     'students.apps.StudentsConfig',
     'todoList.apps.TodolistConfig',
     'CRM.apps.CrmConfig',

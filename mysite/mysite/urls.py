@@ -23,5 +23,6 @@ urlpatterns = [
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
     path('tasklist/', include('todoList.urls')),
-    path('students/', include('students.urls'))
+    path('students/', include('students.urls')),
+    path('marketplace', include('marketplace.urls'))
 ]
