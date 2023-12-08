@@ -26,5 +26,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('tasklist/', include('todoList.urls')),
     path('students/', include('students.urls')),
-    path('marketplace', include('marketplace.urls'))
+    path('marketplace/', include('marketplace.urls')),
+    path('items/', include('items.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

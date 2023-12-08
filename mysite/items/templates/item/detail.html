@@ -1,0 +1,63 @@
+{% extends "marketplace/index.html" %}
+{% block content %}
+
+<div class="navbar ">
+    <br>
+    <div class="container-fluid flex-row justify-content-between">
+        <div class="card col mb-3 text-center" style="max-width: 35rem;">
+            <img src="{{item.image.url}}" class="card-img-top" alt="...">
+        </div>
+
+        <div class="card col mb-3 text-center" style="max-width: 28rem; border: none; ">
+            <div>
+                <div class="card-header" style='text-align: left; background: none;'>
+                    <h2 style='background: none;'>{{item.name}}</h2>
+                </div>
+            </div>
+            
+            <div class="card-body">
+                {% if item.description %}
+                    <h5 class="card-title">{{item.description}}</h5>
+                {% endif %}
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Precio: <i class="fa-solid fa-dollar-sign fa-lg"></i> {{item.price}}</li>
+                </ul>
+                
+            </div>
+            <div class="card-body">
+                <a href="{% url "index" %}" class="btn btn-secondary"><i class="fa-solid fa-cart-shopping fa-lg"></i> Comprar</a>
+                <a href="{% url "marketplace:index" %}" class="btn btn-secondary"><i class="fa-solid fa-arrow-left fa-lg"></i> Regresar</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container text-center">
+    <h1>Productos Relacionados</h1>
+    <div class="row row-cols-3 ">
+        {% if related_items %}
+            {% for item in related_items%}
+                <div class="col mb-3 ">
+                    <center>
+                        <div class="card col mb-3" style="width: 18rem;">
+                            <img src="{{item.image.url}}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-header">{{item.name}}</h5>
+                                <p class="card-text">{{item.description}}</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Precio: <i class="fa-solid fa-dollar-sign fa-lg"></i> {{item.price}}</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="{% url "item:detail" item.id %}" class="btn btn-secondary"><i class="fa-solid fa-eye fa-lg"></i></a>
+                            </div>
+                        </div> 
+                    </center>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+
+

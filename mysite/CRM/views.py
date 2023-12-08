@@ -29,7 +29,7 @@ def login_user(request):
 def logout_user(request):
     logout(request)
     messages.success(request, 'has cerrado sesión')
-    return redirect('home')
+    return redirect('crm:home')
 
 def register_user(request):
     if request.method == 'POST':

@@ -1,0 +1,49 @@
+{% extends "./index.html" %}
+
+{% block content %}
+    <div class='col-md-6 offset-md-3'>
+        <h1><center>Registrarse</center></h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            
+            <div class="form-floating mb-3">
+                {{form.username}}
+                <label for="floatingInput">Nombre de Usuario</label>
+            </div>
+            <div class="form-floating mb-3">
+                {{form.email}}
+                <label for="floatingInput">Correo Electronico</label>
+            </div>
+            <div class="alert alert-dismissible alert-primary">
+                <p>La contraseña debe de tener al menos 8 caracteres que incluya minusculas, mayusculas, números y signos especiales </p>
+            </div>
+            <div class="form-floating mb-3">
+                {{form.password1}}
+                <label for="floatingPassword">Contraseña</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                {{form.password2}}
+                <label for="floatingPassword">Repita la contraseña</label>
+            </div>
+            
+            {% if form.errors or form.non_field_errors %}
+                <div class="alert alert-dismissible alert-danger">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    {% for field in form %}
+                        {{field.errors}}
+                    {% endfor %}
+                    {{form.non_field_errors}}
+                </div>
+            {% endif %}
+
+            <div class="navbar ">
+                <div class="container-fluid flex-row justify-content-between">
+                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                    <a href="{% url "marketplace:index" %}" class='btn btn-secondary'>Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+

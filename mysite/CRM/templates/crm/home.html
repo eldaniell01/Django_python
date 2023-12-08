@@ -17,7 +17,7 @@
                     {% for custom in customer %}
                         <tbody>
                             <tr>
-                                <th scope="row"><a href="{% url "customer" custom.id %}">{{custom.id}}</a></th>
+                                <th scope="row"><a href="{% url "crm:customer" custom.id %}">{{custom.id}}</a></th>
                                 <td>{{custom.first_name}}</td>
                                 <td>{{custom.last_name}}</td>
                                 <td>{{custom.created_at}}</td>
@@ -30,7 +30,7 @@
             {% endif %}
         {% else %}
             <center><h1>LOGIN</h1></center>
-            <form action="{% url "home" %}" method="POST">
+            <form action="{% url "crm:home" %}" method="POST">
                 {% csrf_token %}
                 <form>
                     <div class="mb-3">
