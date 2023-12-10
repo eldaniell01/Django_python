@@ -3,9 +3,9 @@
     {% if request.user.is_authenticated %}
         <p class='user'>Hola {{request.user}} tienes {{count}} tareas incompleta{{count|pluralize:"s"}}</p>
         <br>
-        <a  class='button' href="{% url "logout" %}">Cerrar Sesion</a>
+        <a  class='button' href="{% url "todo:logout" %}">Cerrar Sesion</a>
     {% else %}
-        <a  href="{% url "login" %}">Iniciar Sesion</a>
+        <a  href="{% url "todo:login" %}">Iniciar Sesion</a>
     {% endif %}
     
 
@@ -15,7 +15,7 @@
             <input class='search' type="text" name="search" value={{search}}>
             <input class='button' type="submit" value='Buscar'>
         </form>
-        <a href="{% url "task_create" %}">&#x2b;</a>
+        <a href="{% url "todo:task_create" %}">&#x2b;</a>
     </div>
     
     
@@ -29,17 +29,17 @@
                 {% if task.state %}
                     <div class='titles'>
                         <div class="complete"></div>
-                        <s><a href="{% url "task_update" task.id %}">{{task.title}}</a></s>
+                        <s><a href="{% url "todo:task_update" task.id %}">{{task.title}}</a></s>
                         
                     </div>
-                    <a href="{% url "task_delete" task.id %}">&#215;</a>
+                    <a href="{% url "todo:task_delete" task.id %}">&#215;</a>
                 {% else %}
                     <div class="titles">
                         <div class="incomplete"></div>
-                        <a href="{% url "task_update" task.id %}">{{task.title}}</a>
+                        <a href="{% url "todo:task_update" task.id %}">{{task.title}}</a>
                         
                     </div>
-                    <a href="{% url "task_delete" task.id %}">&#215;</a>
+                    <a href="{% url "todo:task_delete" task.id %}">&#215;</a>
 
                     
                 {% endif %}

@@ -1,6 +1,6 @@
 {% extends "./index.html" %}
 {% block content %}
-    <a class='button'href="{% url "tasks" %}">Regresar</a>
+    <a class='button'href="{% url "todo:tasks" %}">Regresar</a>
     <form method='POST'action="">
         {% csrf_token %}
         <P>Estas seguro que quiere eliminar la tarea? {{task}}</P>

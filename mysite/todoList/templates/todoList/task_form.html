@@ -1,7 +1,7 @@
 {% extends "./index.html" %}
 {% block content %}
     <h1>FORMULARIO DE TAREAS</h1>
-    <a class='button' href="{% url "tasks" %}">Regresar</a>
+    <a class='button' href="{% url "todo:tasks" %}">Regresar</a>
     <form class='form_task' action="" method="POST">
         {% csrf_token %}
         {{form.as_p}}

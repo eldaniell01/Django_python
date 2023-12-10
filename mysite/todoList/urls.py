@@ -2,6 +2,8 @@ from django.urls import path
 from .views import TaskList, TaskDetail, TaskCreate, TaskUpdate, TaskDelete, CustomLoginView, Register
 from django.contrib.auth.views import LogoutView
 
+app_name='todo'
+
 urlpatterns = [
     path('', TaskList.as_view(), name='tasks'),
     path('task/<int:pk>', TaskDetail.as_view(), name='task'),
