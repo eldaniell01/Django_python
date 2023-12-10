@@ -22,9 +22,11 @@
                   <span class="visually-hidden">(current)</span>
                 </a>
               </li>
-              
               <li class="nav-item">
                 <a class="nav-link" href="{% url "marketplace:contact" %}"> <i class="fa-solid fa-envelope fa-lg"></i> Contacto</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url "item:items" %}"> <i class="fa-solid fa-magnifying-glass fa-lg"></i> </a>
               </li>
               {% if user.is_authenticated %}
                 <li class="nav-item">

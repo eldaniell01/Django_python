@@ -2,7 +2,7 @@
 {% block content %}
     <div class='col-md-6 offset-md-3 '>
         <h1><center>Nuevo Item</center></h1>
-        <form action="." method="post" enctype='multipart/form-data'>
+        <form action="" method="post" enctype='multipart/form-data'>
             {% csrf_token %}
             {{form.as_p}}
             {% if form.errors or form.non_field_errors %}
