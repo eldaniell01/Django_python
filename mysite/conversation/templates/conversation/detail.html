@@ -1,0 +1,39 @@
+{% extends "marketplace/index.html" %}
+{% block content %}
+<h1><center>Conversación</center></h1>
+<div class='col-md-6 offset-md-3 mb-4 me-4 mb-4'>
+    {% for message in conversation.message.all %}
+        <div class='col-md-6 offset-md-3 mb-4 me-4 mb-4{% if message.created_by == request.user %} bg-secondary {% else %} bg-info {% endif %}'>
+            <center>
+                <div>
+                    <p>{{message.created_by.username}} | {{message.created_at}}</p>
+                    <p>{{message.content}}</p>
+                </div>
+                
+            </center>
+        </div>
+    {% endfor %}
+</div>
+<div class='col-md-6 offset-md-3 '>
+    <h1><center>Conversación</center></h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        {% if form.errors or form.non_field_errors %}
+            <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                {% for field in form %}
+                    {{field.errors}}
+                {% endfor %}
+                {{form.non_field_errors}}
+            </div>
+        {% endif %}
+        <div class="navbar ">
+            <div class="container-fluid flex-row justify-content-between">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+                <a href="{% url "conversation:inbox" %}" class='btn btn-secondary'>Regresar</a>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

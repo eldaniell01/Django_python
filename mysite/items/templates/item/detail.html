@@ -26,7 +26,7 @@
                 
             </div>
             <div class="card-body">
-                <a href="{% url "index" %}" class="btn btn-secondary"><i class="fa-solid fa-cart-shopping fa-lg"></i> Comprar</a>
+                <a href="{% url "conversation:new" item.id %}" class="btn btn-secondary"><i class="fa-solid fa-cart-shopping fa-lg"></i> Comprar</a>
                 <a href="{% url "marketplace:index" %}" class="btn btn-secondary"><i class="fa-solid fa-arrow-left fa-lg"></i> Regresar</a>
             </div>
         </div>

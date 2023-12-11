@@ -36,7 +36,7 @@
                   <a class="nav-link" href="{% url "dashboard:index" %}"><i class="fa-solid fa-gear fa-lg"></i> Dashboard</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href=""><i class="fa-solid fa-inbox fa-lg"></i> Inbox</a>
+                  <a class="nav-link" href="{% url "conversation:inbox" %}"><i class="fa-solid fa-inbox fa-lg"></i> Inbox</a>
                 </li>
               {% endif %}
             </ul>

@@ -28,5 +28,6 @@ urlpatterns = [
     path('students/', include('students.urls')),
     path('marketplace/', include('marketplace.urls')),
     path('items/', include('items.urls')),
-    path('dashboard', include('dashboard.urls'))
+    path('dashboard/', include('dashboard.urls')), 
+    path('conversation/', include('conversation.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

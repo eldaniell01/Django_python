@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'conversation.apps.ConversationConfig',
     'dashboard.apps.DashboardConfig',
     'items.apps.ItemsConfig',
     'marketplace.apps.MarketplaceConfig',

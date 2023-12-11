@@ -1,0 +1,32 @@
+{% extends "marketplace/index.html" %}
+{% block content %}
+<h1><center>Conversación</center></h1>
+<div class='col-md-6 offset-md-3 '>
+    {% for conversation in conversations %}
+        <div class='col-md-6 offset-md-3 '>
+            <center>
+                <a href="{% url "conversation:detail" conversation.id %}">
+                    <div class="card col mb-3" style="width: 18rem;">
+                    
+                            <img src="{{conversation.item.image.url}}" class="card-img-top" alt="...">
+                        
+                        <div class="card-body">
+                            <h5 class="card-header">{{conversation.item.name}}</h5>
+                            <p class="card-text">{{conversation.item.description}}</p>
+                        </div>
+                    </div> 
+                    <div>
+                        {% for member in conversation.members.all %}
+                            {% if member != request.user %}
+                                <p>{{member.username}} | {{conversation.modified_at}}</p>
+                                
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </a>
+            </center>
+        </div>
+    {% endfor %}
+    
+</div>
+{% endblock %}
