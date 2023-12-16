@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'chat.apps.ChatConfig',
     'conversation.apps.ConversationConfig',
     'dashboard.apps.DashboardConfig',
     'items.apps.ItemsConfig',
@@ -77,6 +78,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
+"""ASGI_APPLICATION = 'djangochat.asgi.application'"""
 
 
 # Database

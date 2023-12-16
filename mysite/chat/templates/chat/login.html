@@ -1,0 +1,42 @@
+{% extends "./index.html" %}
+
+{% block content %}
+<div class='col-md-6 offset-md-3'>
+    <h1><center>Inicio de Sesión</center></h1>
+    <form action="{% url "chat:index" %}" method="POST">
+        {% csrf_token %}
+        
+        <div class="form-floating mb-3">
+            {{form.username}}
+            <label for="floatingInput">Nombre de Usuario</label>
+        </div>
+        
+        <div class="form-floating mb-3">
+            {{form.password}}
+            <label for="floatingPassword">Contraseña</label>
+        </div>
+        {% if form.errors or form.non_field_errors %}
+            <div class="alert alert-dismissible alert-danger">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                {% for field in form %}
+                    {{field.errors}}
+                {% endfor %}
+                {{form.non_field_errors}}
+            </div>
+        {% endif %}
+        <div class="navbar ">
+            <div class="container-fluid flex-row justify-content-between">
+                <button type="submit" class="btn btn-success">Iniciar Sesión</button>
+                <a href="{% url "chat:signup" %}" class='btn btn-secondary'>Crear Usuario</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
