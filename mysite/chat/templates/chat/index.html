@@ -19,7 +19,10 @@
             <ul class="d-flex navbar-nav ">
               {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url "chat:logout" %}">Log out</a>
+                    <a class="nav-link active" aria-current="page" href="{% url "room:rooms" %}">Rooms</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url "chat:logout" %}">Log out</a>
                 </li>
               {% else %}
                 <li class='nav-item'>
@@ -36,6 +39,10 @@
       
     <div class="container-fluid">
         {% block content %}
+      
+        {% endblock %}
+
+        {% block script %}
       
         {% endblock %}
     </div>

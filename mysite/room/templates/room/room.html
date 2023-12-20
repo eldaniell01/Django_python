@@ -1,0 +1,55 @@
+{% extends "chat/index.html" %}
+{% block content %}
+
+
+<div class='col-md-6 offset-md-3 mb-3'>
+    <h1><center>{{room.name}}</center></h1>
+</div>
+<div class='col-md-6 offset-md-3 mb-3'>
+    <div class="card text-white bg-success mb-3" style="max-width: 35rem;">
+        <div class="card-header">username</div>
+        <div class="card-body text-white bg-dark">
+            <p class="card-text">texto</p>
+        </div>
+     </div>
+     <form action="" method="post">
+        <input type="text" class="form-control" id="chat-message-input" placeholder="escribe el mensaje">
+        <div class="navbar ">
+            <div class="container-fluid flex-row justify-content-between">
+                <button type="submit" class="btn btn-success" id='chat-message-submit'>Enviar</button>
+                <a href="{% url "room:rooms" %}" class='btn btn-secondary'>Cancelar</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+{{room.slug|json_script:'room_slug' }}
+
+<script>
+    const roomName = JSON.parse(document.getElementById('room_slug').textContent);
+    alert(roomName);
+    const chatSocket = new WebSocket('ws://'+ window.location.host+'/ws/'+roomName+'/');
+
+    chatSocket.onmessage = function(e){
+        console.log('onmessage');
+    }
+
+    chatSocket.onerror = function(e){
+        console.log('web', e);
+    }
+
+    chatSocket.onclose = function(e){
+        console.log('onclose');
+    }
+</script>
+
+
+{% endblock %}
+
+
+
+

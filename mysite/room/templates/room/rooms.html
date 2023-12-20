@@ -1,0 +1,22 @@
+{% extends "chat/index.html" %}
+{% block content %}
+
+<div class='col-md-6 offset-md-3 mb-3'>
+    <h1><center>Rooms</center></h1>
+    {% for room in rooms %}
+        <div class="card mb-3" style="width: 18rem;">
+            <div class="card-body bg-success">
+                <h5 class="card-title">{{room.name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{room.slug}}</h6>
+                <a href="{% url "room:roo" room.slug %}" class="card-link btn btn-info">Unirse</a>
+            </div>
+      </div>
+    {% endfor %}
+</div>
+
+
+{% endblock  %}
+
+
+
+
