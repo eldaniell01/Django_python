@@ -6,13 +6,14 @@
     <h1><center>{{room.name}}</center></h1>
 </div>
 <div class='col-md-6 offset-md-3 mb-3'>
-    <div class="card text-white bg-success mb-3" style="max-width: 35rem;">
+    <div class="card text-white bg-success mb-3" id='chat-messages' style="max-width: 35rem;">
         <div class="card-header">username</div>
         <div class="card-body text-white bg-dark">
             <p class="card-text">texto</p>
         </div>
-     </div>
+    </div>
      <form action="" method="post">
+        {% csrf_token %}
         <input type="text" class="form-control" id="chat-message-input" placeholder="escribe el mensaje">
         <div class="navbar ">
             <div class="container-fluid flex-row justify-content-between">
@@ -28,14 +29,28 @@
 {% block script %}
 
 {{room.slug|json_script:'room_slug' }}
-
+{{request.user.username|json_script:'json_username'}}
 <script>
     const roomName = JSON.parse(document.getElementById('room_slug').textContent);
-    alert(roomName);
+    const userName = JSON.parse(document.getElementById('json_username').textContent);
     const chatSocket = new WebSocket('ws://'+ window.location.host+'/ws/'+roomName+'/');
 
     chatSocket.onmessage = function(e){
         console.log('onmessage');
+        const data = JSON.parse(e.data);
+        if(data.message){
+            d =data.message
+            console.log(d)
+            let html = '<div class="card text-white bg-success mb-3" style="max-width: 35rem;">';
+                html += '<div class="card-header">'+data.username+'</div>';
+                html += '<div class="card-body text-white bg-dark">';
+                html += '<p class="card-text">'+data.message+'</p>';
+                html += '</div>';
+                html += '</div>';
+            document.querySelector('#chat-messages').innerHTML += html;
+        }else{
+            alert('mensaje vacio');
+        }
     }
 
     chatSocket.onerror = function(e){
@@ -44,6 +59,19 @@
 
     chatSocket.onclose = function(e){
         console.log('onclose');
+    }
+
+    document.querySelector('#chat-message-submit').onclick = function(e){
+        e.preventDefault();
+        const messageInput = document.querySelector('#chat-message-input');
+        const message = messageInput.value;
+        chatSocket.send(JSON.stringify({
+            'message': message,
+            'username': userName,
+            'room': roomName
+        }))
+        messageInput.value = '';
+        return false;
     }
 </script>
 
