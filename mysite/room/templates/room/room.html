@@ -5,13 +5,20 @@
 <div class='col-md-6 offset-md-3 mb-3'>
     <h1><center>{{room.name}}</center></h1>
 </div>
-<div class='col-md-6 offset-md-3 mb-3'>
-    <div class="card text-white bg-success mb-3" id='chat-messages' style="max-width: 35rem;">
-        <div class="card-header">username</div>
-        <div class="card-body text-white bg-dark">
-            <p class="card-text">texto</p>
-        </div>
+<div class='col-md-4 offset-md-4 mb-3'>
+    <div class='chat-messages' id='chat-messages'>
+        {% for message in messages %}
+            <div class="card text-white bg-success mb-3" style="max-width: 35rem;">
+                <div class="card-header">{{message.user.username}}</div>
+                <div class="card-body text-white bg-dark">
+                    <p class="card-text">{{message.content}}</p>
+                </div>
+            </div>
+            
+        
+        {% endfor %}
     </div>
+    
      <form action="" method="post">
         {% csrf_token %}
         <input type="text" class="form-control" id="chat-message-input" placeholder="escribe el mensaje">
@@ -47,7 +54,9 @@
                 html += '<p class="card-text">'+data.message+'</p>';
                 html += '</div>';
                 html += '</div>';
+                
             document.querySelector('#chat-messages').innerHTML += html;
+            scrollToBottom();
         }else{
             alert('mensaje vacio');
         }
@@ -73,6 +82,13 @@
         messageInput.value = '';
         return false;
     }
+
+
+    function scrollToBottom(){
+        const obj = document.querySelector('#chat-messages');
+        obj.scrollTop = obj.scollHeight;
+    }
+    scrollToBottom();
 </script>
 
 
